@@ -1,38 +1,174 @@
+:root {
+  --neon-blue: #00ffff;
+  --neon-pink: #ff00ff;
+  --neon-green: #39ff14;
+  --dark-bg: #0a0a0a;
+  --light-bg: #1a1a1a;
+  --table-bg: rgba(0, 255, 255, 0.05);
+  --table-bg-alt: rgba(255, 0, 255, 0.05);
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--neon-blue);
+  background-image:
+          linear-gradient(to right, var(--dark-bg) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--dark-bg) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  padding: 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  flex-grow: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
+.build-index-button {
+  background-color: var(--neon-pink);
+  color: var(--dark-bg);
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px auto;
+  width: 200px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.build-index-button:hover {
+  background-color: var(--neon-blue);
+  box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.build-index-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+          from 0deg,
+          transparent 0deg 90deg,
+          var(--neon-pink) 90deg 180deg,
+          transparent 180deg 270deg,
+          var(--neon-blue) 270deg 360deg
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.build-index-button:hover::before {
+  opacity: 0.15;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
     transform: rotate(360deg);
+  }
+}
+
+.table-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.scan-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+          to bottom,
+          transparent 50%,
+          rgba(0, 255, 255, 0.03) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.address-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  table-layout: fixed;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  position: relative;
+  z-index: 0;
+}
+
+.address-table th,
+.address-table td {
+  padding: 12px;
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Specify properties */
+}
+
+.address-table th {
+  background-color: var(--neon-green);
+  color: var(--dark-bg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--neon-blue);
+}
+
+.address-table th:hover {
+  background-color: #4aff2b;
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.address-table td {
+  word-wrap: break-word;
+  background-color: var(--table-bg);
+  color: var(--neon-blue);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.address-table tr:nth-child(even) td {
+  background-color: var(--table-bg-alt);
+}
+
+.address-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2) inset;
+}
+
+@media (max-width: 768px) {
+  .address-table {
+    font-size: 0.8rem;
+  }
+
+  .address-table th,
+  .address-table td {
+    padding: 8px;
   }
 }
