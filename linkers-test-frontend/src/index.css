@@ -1,0 +1,185 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #e0e0e0;
+  --neon-blue: #00f3ff;
+  --neon-pink: #ff00ff;
+  --neon-green: #39ff14;
+  --accent-color: #7700ff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+          linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+code {
+  font-family: 'Orbitron', monospace;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.App-header {
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+  margin-bottom: 20px;
+}
+
+.address-search {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+  border: 1px solid var(--neon-pink);
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--neon-pink);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--neon-pink);
+}
+
+.error-message {
+  color: var(--neon-pink);
+  margin-top: 10px;
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--neon-pink);
+}
+
+.address-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin-top: 20px;
+}
+
+.address-table th {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  padding: 12px;
+  background-color: var(--neon-green);
+  color: var(--bg-color);
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.address-table td {
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.address-table tr:nth-child(even) td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.address-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-blue);
+}
+
+/* Additional cyberpunk-inspired elements */
+.App::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+          linear-gradient(to right, transparent 49px, var(--neon-pink) 50px, transparent 51px),
+          linear-gradient(to bottom, transparent 49px, var(--neon-blue) 50px, transparent 51px);
+  background-size: 100px 100px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glitch effect for the title */
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 var(--neon-pink), -0.05em -0.025em 0 var(--neon-blue),
+    -0.025em 0.05em 0 var(--neon-green);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 var(--neon-pink), -0.05em -0.025em 0 var(--neon-blue),
+    -0.025em 0.05em 0 var(--neon-green);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 var(--neon-pink), 0.025em 0.025em 0 var(--neon-blue),
+    -0.05em -0.05em 0 var(--neon-green);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 var(--neon-pink), 0.025em 0.025em 0 var(--neon-blue),
+    -0.05em -0.05em 0 var(--neon-green);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 var(--neon-pink), 0.05em 0 0 var(--neon-blue),
+    0 -0.05em 0 var(--neon-green);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 var(--neon-pink), 0.05em 0 0 var(--neon-blue),
+    0 -0.05em 0 var(--neon-green);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 var(--neon-pink), -0.025em -0.025em 0 var(--neon-blue),
+    -0.025em -0.05em 0 var(--neon-green);
+  }
+}
+
+h1 {
+  animation: glitch 1s linear infinite;
+}
