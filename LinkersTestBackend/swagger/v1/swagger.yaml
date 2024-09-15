@@ -1,0 +1,107 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/addresses":
+    get:
+      summary: Searches addresses
+      tags:
+      - Addresses
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: addresses found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    postal_code:
+                      type: string
+                    prefecture:
+                      type: string
+                    city:
+                      type: string
+                    town_area:
+                      type: string
+                    kyoto_street:
+                      type: string
+                      nullable: true
+                    block_number:
+                      type: string
+                      nullable: true
+                    business_name:
+                      type: string
+                      nullable: true
+                    business_address:
+                      type: string
+                      nullable: true
+                  required:
+                  - postal_code
+                  - prefecture
+                  - city
+                  - town_area
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+  "/api/v1/build_index":
+    post:
+      summary: Builds the address index
+      tags:
+      - Addresses
+      responses:
+        '200':
+          description: index built successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
