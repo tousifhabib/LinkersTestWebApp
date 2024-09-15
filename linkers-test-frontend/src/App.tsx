@@ -1,26 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import AddressSearch from './components/AddressSearch';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+    return (
+        <div className="App cyberpunk-app">
+            <header className="cyberpunk-header">
+                <h1 className="neon-text">住所検索システム</h1>
+            </header>
+            <AddressSearch />
+        </div>
+    );
+};
 
 export default App;
